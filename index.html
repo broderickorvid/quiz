@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plagiarism Report - Immediate Action Required</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f8f8f8;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        .warning {
+            color: red;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .fake-link {
+            display: inline-block;
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        .fake-link:hover {
+            color: darkblue;
+        }
+        .hidden {
+            display: none;
+        }
+        .counter {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="warning">⚠️ URGENT: Plagiarism Alert on Your Quiz ⚠️</p>
+        <p>Sainte-Anne has flagged <strong>potential plagiarism</strong> in your recent quiz. Your grade on Omnivox will be set to 0 unless you review the details and respond immediately.</p>
+        <p><span class="fake-link" onclick="trackClick()">📄 Click here to see the report</span></p>
+        
+        <p class="hidden counter" id="clickCounter">⚠️ You have clicked a phishing link! Number of clicks: <span id="clickCount">0</span></p>
+    </div>
+
+    <script>
+        // Load click count from local storage
+        let count = localStorage.getItem("clickCount") || 0;
+        document.getElementById("clickCount").textContent = count;
+
+        function trackClick() {
+            alert("⚠️ You just clicked a phishing link! Be more cautious next time.");
+            count++;
+            localStorage.setItem("clickCount", count);
+            document.getElementById("clickCount").textContent = count;
+            document.getElementById("clickCounter").classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>
